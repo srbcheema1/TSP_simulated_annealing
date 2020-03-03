@@ -5,16 +5,16 @@ from simulated_annealing import SimulatedAnnealing
 def main():
     '''set the simulated annealing algorithm params'''
     temp = 1000
-    stopping_temp = 0.00000001
+    stopping_temp = 0.0001
     alpha = 0.9995
-    stopping_iter = 10000000
+    stopping_iter = 100000
 
     '''set the dimensions of the grid'''
     size_width = 200
     size_height = 200
 
     '''set the number of nodes'''
-    population_size = 70
+    population_size = 20
 
     '''generate random list of nodes'''
     nodes = NodeGenerator(size_width, size_height, population_size).generate()
@@ -26,8 +26,8 @@ def main():
     '''animate'''
     sa.animateSolutions()
 
-    '''show the improvement over time'''
-    sa.plotLearning()
+    # '''show the improvement over time'''
+    # sa.plotLearning()
 
 
 if __name__ == "__main__":
