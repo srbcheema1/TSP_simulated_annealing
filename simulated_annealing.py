@@ -42,8 +42,6 @@ class SimulatedAnnealing:
         self.initial_weight = self.curr_weight
         self.min_weight = self.curr_weight
 
-        self.weight_list = [self.curr_weight]
-
         print('Intial weight: ', self.curr_weight)
 
     def weight(self, sol):
@@ -93,21 +91,10 @@ class SimulatedAnnealing:
             self.accept(candidate)
             self.temp *= self.alpha
             self.iteration += 1
-            self.weight_list.append(self.curr_weight)
             self.solution_history.append(self.curr_solution)
 
         print('Minimum weight: ', self.min_weight)
-        print('Improvement: ',
-              round((self.initial_weight - self.min_weight) / (self.initial_weight), 4) * 100, '%')
+        print('Improvement: ', round((self.initial_weight - self.min_weight) / (self.initial_weight), 4) * 100, '%')
 
     def animateSolutions(self):
         animated_visualizer.animateTSP(self.solution_history, self.coords)
-
-    def plotLearning(self):
-        plt.plot([i for i in range(len(self.weight_list))], self.weight_list)
-        line_init = plt.axhline(y=self.initial_weight, color='r', linestyle='--')
-        line_min = plt.axhline(y=self.min_weight, color='g', linestyle='--')
-        plt.legend([line_init, line_min], ['Initial weight', 'Optimized weight'])
-        plt.ylabel('Weight')
-        plt.xlabel('Iteration')
-        plt.show()

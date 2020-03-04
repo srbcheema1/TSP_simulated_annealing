@@ -14,7 +14,7 @@ def nearestNeighbourSolution(dist_matrix):
     '''
     Computes the initial solution (nearest neighbour strategy)
     '''
-    node = random.randrange(len(dist_matrix))
+    node = random.randrange(len(dist_matrix)) # random number in range 0 to len(dist_matrix)-1
     result = [node]
 
     nodes_to_visit = list(range(len(dist_matrix)))
