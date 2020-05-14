@@ -3,10 +3,10 @@ from matplotlib.animation import FuncAnimation
 import numpy as np
 
 
-def animateTSP(history, points):
+def animateTSP(history, cities):
     ''' animate the solution over time
         hisotry : list;history of the solutions chosen by the algorithm
-        points: array_like, points with the coordinates
+        cities: array_like, cities with the coordinates
     '''
 
     ''' approx 1500 frames for animation '''
@@ -17,8 +17,8 @@ def animateTSP(history, points):
 
     def init():
         ''' initialize node dots on graph '''
-        x = [points[i][0] for i in history[0]]
-        y = [points[i][1] for i in history[0]]
+        x = [cities[i].x for i in history[0]]
+        y = [cities[i].y for i in history[0]]
         plt.plot(x, y, 'co')
 
         ''' draw axes slighty bigger  '''
@@ -33,8 +33,8 @@ def animateTSP(history, points):
 
     def update(frame):
         ''' for every frame update the solution on the graph '''
-        x = [points[i, 0] for i in history[frame] + [history[frame][0]]]
-        y = [points[i, 1] for i in history[frame] + [history[frame][0]]]
+        x = [cities[i].x for i in history[frame] + [history[frame][0]]]
+        y = [cities[i].y  for i in history[frame] + [history[frame][0]]]
         line.set_data(x, y)
         return line
 

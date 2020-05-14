@@ -1,5 +1,7 @@
-from nodes_generator import NodeGenerator
 from simulated_annealing import SimulatedAnnealing
+from city import City
+from graph import Graph
+from dynamic_plot import DynamicPlot
 
 
 def main():
@@ -17,12 +19,14 @@ def main():
     population_size = 120
 
     '''generate random list of nodes'''
-    nodes = NodeGenerator(size_width, size_height, population_size).generate()
+    cities = City.load_cities('./data/data1.txt')
+    graph = Graph(cities)
 
     '''run simulated annealing algorithm with 2-opt'''
-    sa = SimulatedAnnealing(nodes, temp, alpha, stopping_temp, stopping_iter)
-    sa.anneal()
-    sa.animateSolutions()
+    sa = SimulatedAnnealing(graph, temp, alpha, stopping_temp, stopping_iter)
+    history = sa.anneal()
+    print(len(history))
+    DynamicPlot().show(cities,history)
 
 if __name__ == "__main__":
     main()
