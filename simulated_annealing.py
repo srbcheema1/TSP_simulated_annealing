@@ -7,27 +7,10 @@ import animated_visualizer
 
 class SimulatedAnnealing:
     def __init__(self, coords, temp, alpha, stopping_temp, stopping_iter):
-        ''' animate the solution over time
-
-            Parameters
-            ----------
-            coords: array_like
-                list of coordinates
-            temp: float
-                initial temperature
-            alpha: float
-                rate at which temp decreases
-            stopping_temp: float
-                temerature at which annealing process terminates
-            stopping_iter: int
-                interation at which annealing process terminates
-
-        '''
-
-        self.coords = coords
-        self.sample_size = len(coords)
-        self.temp = temp
-        self.alpha = alpha
+        self.coords = coords #array_like,list of coordinates
+        self.sample_size = len(coords) 
+        self.temp = temp #initial temperature
+        self.alpha = alpha #rate at which temp decreases
         self.stopping_temp = stopping_temp
         self.stopping_iter = stopping_iter
         self.iteration = 1
@@ -45,9 +28,6 @@ class SimulatedAnnealing:
         print('Intial weight: ', self.curr_weight)
 
     def weight(self, sol):
-        '''
-        Calcuate weight
-        '''
         return sum([self.dist_matrix[i, j] for i, j in zip(sol, sol[1:] + [sol[0]])])
 
     def acceptance_probability(self, candidate_weight):

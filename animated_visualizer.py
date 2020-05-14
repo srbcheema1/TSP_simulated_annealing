@@ -5,21 +5,14 @@ import numpy as np
 
 def animateTSP(history, points):
     ''' animate the solution over time
-
-        Parameters
-        ----------
-        hisotry : list
-            history of the solutions chosen by the algorithm
-        points: array_like
-            points with the coordinates
+        hisotry : list;history of the solutions chosen by the algorithm
+        points: array_like, points with the coordinates
     '''
 
     ''' approx 1500 frames for animation '''
     key_frames_mult = len(history) // 5000
 
     fig, ax = plt.subplots()
-
-    ''' path is a line coming through all the nodes '''
     line, = plt.plot([], [], lw=2)
 
     def init():
@@ -46,6 +39,5 @@ def animateTSP(history, points):
         return line
 
     ''' animate precalulated solutions '''
-    ani = FuncAnimation(fig, update, frames=range(0, len(history), key_frames_mult),
-                        init_func=init, interval=3, repeat=False)
+    ani = FuncAnimation(fig, update, frames=range(0, len(history), key_frames_mult), init_func=init, interval=3, repeat=False)
     plt.show()

@@ -12,4 +12,4 @@ class NodeGenerator:
         xs = np.random.randint(self.width, size=self.nodesNumber)
         ys = np.random.randint(self.height, size=self.nodesNumber)
 
-        return np.column_stack((xs, ys))
+        return np.column_stack((xs, ys)) # create array of (arrays of len2)
