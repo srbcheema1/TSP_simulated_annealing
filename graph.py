@@ -1,5 +1,4 @@
 import math
-from spike.blossom import srb_blossom
 
 class Graph(object):
 	def __init__(self, cities: list):
